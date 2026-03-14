@@ -8,15 +8,12 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-// import { getPosts } from "@/lib/getPosts";
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function HeroSection(){
-    // const posts = getPosts()
-    // console.log(posts)
+
     const containerRef = useRef(null)
-    // const textRef = useRef(null)
     const imageRef = useRef(null)
     const textRef = useRef<HTMLHeadingElement | null>(null)
     const decRef = useRef<HTMLParagraphElement | null>(null)
@@ -45,12 +42,11 @@ export default function HeroSection(){
         const el1 = textRef.current
         const el2 = decRef.current
 
-        //type animation
         if (el1) typeText(el1, 0.08)
         if (el2) typeText(el2, 0.01)
 
-        //load animation
         const tlLoad = gsap.timeline()
+
         tlLoad
             .from(imageRef.current, {
                 y: 50,
@@ -73,72 +69,141 @@ export default function HeroSection(){
                 duration: 0.8,
             }, "<")
 
-        //scroll animation
         const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: true,
-                invalidateOnRefresh: true,
-            }
-        })
+    scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+    }
+})
 
-        tl.to(
-            [
-                textRef.current,
-                imageRef.current,
-                decRef.current,
-                linkRef.current,
-            ],
-            {
-                y: -300,
-                opacity: 0,
-            }
-        ).to(
-            containerRef.current,
-            {
-                y: 500,
-            },
-            "<"
-        )
+tl.fromTo(
+    [
+        textRef.current,
+        imageRef.current,
+        decRef.current,
+        linkRef.current,
+    ],
+    {
+        y: 0,
+        opacity: 1,
+    },
+    {
+        y: -300,
+        opacity: 0,
+    }
+)
 
         ScrollTrigger.refresh()
+
     }, { scope: containerRef })
 
     return(
-        <>
-            <section ref={containerRef} className="relative min-h-screen bg-cover bg-center flex flex-col items-center py-40 justify-center" style={{backgroundImage: "url('/images/hero.webp')"}}>
-                <div className="absolute inset-0 bg-[#3A3F5C]/86"></div>
-                <div ref={imageRef} className="w-60 h-60 relative">
-                    <Image src={`https://avatars.githubusercontent.com/u/183741237?v=4`} alt="profile" fill unoptimized className="rounded-full object-cover"/>
-                </div>
-                <div className="py-4">
-                    <h1 ref={textRef} className="text-3xl font-extrabold drop-shadow-[0_2px_4px_#6DAFC2]">
+        <section
+            ref={containerRef}
+            className="
+            relative
+            min-h-screen
+            bg-cover bg-center
+            flex flex-col
+            items-center
+            justify-center
+            px-4
+            py-24 md:py-40
+            text-center
+            "
+            style={{backgroundImage: "url('/images/hero.webp')"}}
+        >
+
+            <div className="absolute inset-0 bg-[#3A3F5C]/86"></div>
+
+            {/* IMAGE */}
+            <div
+                ref={imageRef}
+                className="
+                relative
+                w-32 h-32
+                sm:w-40 sm:h-40
+                md:w-60 md:h-60
+                "
+            >
+                <Image
+                    src={`https://avatars.githubusercontent.com/u/183741237?v=4`}
+                    alt="profile"
+                    fill
+                    unoptimized
+                    className="rounded-full object-cover"
+                />
+            </div>
+
+            {/* NAME */}
+            <div className="py-3 md:py-4">
+                <h1
+                    ref={textRef}
+                    className="
+                    text-xl
+                    sm:text-2xl
+                    md:text-3xl
+                    font-extrabold
+                    drop-shadow-[0_2px_4px_#6DAFC2]
+                    "
+                >
                     MieAyamPerfect
-                    </h1>
-                </div>
-                <div className="max-w-125 text-center drop-shadow-[0_2px_4px_#6DAFC2]">
-                    <p ref={decRef}>
-                        {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec dolor non ante consequat blandit a eget lorem. */}
-                        Digital forensics player. I recover deleted files but somehow still cant recover from seeing you.
-                    </p>
-                </div>
-                <div ref={linkRef} className="flex gap-5 py-4 drop-shadow-[0_2px_4px_#6DAFC2]">
-                    <a className="hover:scale-110 hover:text-[#A6E3F1] transition" href="mailto:mieayamperfect@gmail.com" target="_blank">
-                        <HiOutlineMail className="text-3xl"></HiOutlineMail>
-                    </a>
-                    <a className="hover:scale-110 hover:text-[#A6E3F1] transition" href="https://discord.com/users/613005513168519178" target="_blank">
-                        <FaDiscord className="text-3xl"></FaDiscord>
-                    </a>
-                    <a className="hover:scale-110 hover:text-[#A6E3F1] transition" href="https://linkedin.com/in/dhycko" target="_blank">
-                        <FiLinkedin className="text-3xl"></FiLinkedin>
-                    </a>
-                    <a className="hover:scale-110 hover:text-[#A6E3F1] transition" href="https://github.com/Chikootlin" target="_blank">
-                        <FiGithub className="text-3xl"></FiGithub>
-                    </a>
-                </div>
-            </section>
-        </>
+                </h1>
+            </div>
+
+            {/* DESCRIPTION */}
+            <div
+                className="
+                max-w-xs
+                sm:max-w-md
+                md:max-w-2xl
+                px-2
+                drop-shadow-[0_2px_4px_#6DAFC2]
+                "
+            >
+                <p
+                    ref={decRef}
+                    className="
+                    text-sm
+                    sm:text-base
+                    md:text-lg
+                    "
+                >
+                    Digital forensics player. I recover deleted files but somehow still cant recover from seeing you.
+                </p>
+            </div>
+
+            {/* LINKS */}
+            <div
+                ref={linkRef}
+                className="
+                flex
+                gap-4
+                md:gap-5
+                py-4
+                drop-shadow-[0_2px_4px_#6DAFC2]
+                "
+            >
+                <a className="hover:scale-110 transition text-xl md:text-3xl" href="mailto:mieayamperfect@gmail.com" target="_blank">
+                    <HiOutlineMail/>
+                </a>
+
+                <a className="hover:scale-110 transition text-xl md:text-3xl" href="https://discord.com/users/613005513168519178" target="_blank">
+                    <FaDiscord/>
+                </a>
+
+                <a className="hover:scale-110 transition text-xl md:text-3xl" href="https://linkedin.com/in/dhycko" target="_blank">
+                    <FiLinkedin/>
+                </a>
+
+                <a className="hover:scale-110 transition text-xl md:text-3xl" href="https://github.com/Chikootlin" target="_blank">
+                    <FiGithub/>
+                </a>
+            </div>
+
+        </section>
     )
 }

@@ -1,4 +1,3 @@
-import SmoothScrollWrapper from "./components/smoothScrollWrapper";
 import HeroSection from "./components/heroSection";
 import PostSection from "./components/postSection";
 import AboutSection from "./components/aboutSection";
@@ -9,7 +8,6 @@ export default async function Home() {
 
   return (
     <>
-    <SmoothScrollWrapper>
     {/* Hero */}
     <HeroSection></HeroSection>
 
@@ -19,7 +17,6 @@ export default async function Home() {
     {/* About */}
     <AboutSection></AboutSection>
     
-    </SmoothScrollWrapper>
     </>
   );
 }

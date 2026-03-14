@@ -68,18 +68,24 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
 
     return(
         <>
-            <section className="relative min-h-screen bg-cover bg-center pt-40" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
+            <section className="relative
+min-h-dvh md:min-h-screen
+bg-cover
+bg-center
+pt-28 md:pt-40
+pb-16
+px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                 <div className="absolute inset-0 bg-[#3A3F5C]/86"></div>
-                <div className="relative w-full max-w-400 mx-auto px-6">
-                    <Link href={'/blog'} className="text-xl drop-shadow-[0_2px_4px_#6DAFC2] hover:text-[#A6E3F1]">
+                <div className="relative w-full max-w-7xl mx-auto px-6">
+                    <Link href={'/blog'} className="text-sm md:text-base drop-shadow-[0_2px_4px_#6DAFC2] hover:text-[#A6E3F1]">
                         &lt;- Back To All Posts
                     </Link>
-                    <h1 className="text-4xl font-extrabold py-6 drop-shadow-[0_2px_4px_#6DAFC2]">
+                    <h1 className="text-2xl md:text-4xl font-extrabold py-6 drop-shadow-[0_2px_4px_#6DAFC2]">
                         {title}
                     </h1>
                     {/* Cover */}
                     {cover && (
-                        <div className="relative w-full aspect-4/1">
+                        <div className="relative w-full aspect-[16/9] md:aspect-[4/1]">
                             <Image
                             src={cover}
                             alt="cover"
@@ -91,8 +97,8 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
                     )}
                 </div>
 
-                <div className="relative w-full max-w-400 mx-auto px-6 py-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-[4fr_1fr] gap-10">
+                <div className="relative w-full max-w-7xl mx-auto px-6 py-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_280px] gap-10">
                         {/* Content */}
                         <div className="space-y-4">
                             {(blocks as BlockObjectResponse[]).map((block, i, arr) => {
@@ -108,7 +114,7 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
                                     if (!url) return null
 
                                     return (
-                                        <div key={block.id} className="relative w-full h-100 my-4">
+                                        <div key={block.id} className="relative w-full aspect-video my-4">
                                             <Image
                                                 src={url}
                                                 alt=""

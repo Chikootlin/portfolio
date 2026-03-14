@@ -4,6 +4,7 @@ import { JetBrains_Mono } from "next/font/google";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import "./globals.css";
+import SmoothScrollWrapper from "./components/smoothScrollWrapper";
 
 const jetbrains = JetBrains_Mono({
   weight: "400",
@@ -21,21 +22,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${jetbrains.className} antialiased`}
-      >
-        {/* Navbar */}
-        <Navbar></Navbar>
-        {/* Container */}
-        <div className="min-h-screen relative">
-          <main className="mx-auto">
-            {children}
-          </main>
-          {/* Footer */}
-          <Footer></Footer>     
-        </div>
-      </body>
-    </html>
+    <SmoothScrollWrapper>  
+      <html lang="en" className="scroll-smooth">
+        <body
+          className={`${jetbrains.className} antialiased`}
+        >
+          {/* Navbar */}
+          <Navbar></Navbar>
+          {/* Container */}
+          <div className="min-h-screen relative">
+            <main className="mx-auto">
+              {children}
+            </main>
+            {/* Footer */}
+            <Footer></Footer>     
+          </div>
+        </body>
+      </html>
+    </SmoothScrollWrapper>
   );
 }
