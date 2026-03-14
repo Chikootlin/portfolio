@@ -2,7 +2,6 @@ import { getPageContent } from "./getPageContent";
 
 export async function getPreviewText(pageId: string) {
     const blocks = await getPageContent(pageId);
-
     for (const block of blocks) {
         if (!("type" in block)) continue;
 

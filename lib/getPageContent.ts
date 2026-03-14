@@ -7,8 +7,8 @@ export async function getPageContent(pageId: string) {
 
     while (true) {
         const res = await notion.blocks.children.list({
-        block_id: pageId,
-        start_cursor: cursor,
+            block_id: pageId,
+            start_cursor: cursor,
         })
 
         results = results.concat(res.results)

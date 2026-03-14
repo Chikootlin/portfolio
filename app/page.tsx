@@ -8,15 +8,15 @@ export default async function Home() {
 
   return (
     <>
-    {/* Hero */}
-    <HeroSection></HeroSection>
+      {/* Hero */}
+      <HeroSection></HeroSection>
 
-    {/* Posts */}
-    <PostSection posts={posts}></PostSection>
+      {/* Posts */}
+      <PostSection posts={posts}></PostSection>
 
-    {/* About */}
-    <AboutSection></AboutSection>
-    
+      {/* About */}
+      <AboutSection></AboutSection>
+      
     </>
   );
 }

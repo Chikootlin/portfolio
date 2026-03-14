@@ -4,17 +4,10 @@ import { getPageContent, getChildrenMap } from "@/lib/getPageContent"
 import { getPostById } from "@/lib/getPostById"
 import { PageObjectResponse, BlockObjectResponse, RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints"
 
-type NumberedListBlock = Extract<
-    BlockObjectResponse,
-    { type: "numbered_list_item" }
->
+type NumberedListBlock = Extract< BlockObjectResponse, { type: "numbered_list_item" }>
+type BulletListBlock = Extract< BlockObjectResponse, { type: "bulleted_list_item" } >
 
-type BulletListBlock = Extract<
-    BlockObjectResponse,
-    { type: "bulleted_list_item" }
->
-
-export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogDetail({ params }: { params: Promise< { slug: string } > }) {
     const { slug } = await params
     const pageId = slug
     const post = await getPostById(pageId)
@@ -45,36 +38,24 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
         }
     }
 
-    const headings = (blocks as BlockObjectResponse[]).filter((b) =>
-        b.type === "heading_1" || b.type === "heading_2" || b.type === "heading_3"
-    )
+    const headings = (blocks as BlockObjectResponse[]).filter((b) => b.type === "heading_1" || b.type === "heading_2" || b.type === "heading_3" )
 
     function renderRichText(richText: RichTextItemResponse[]) {
         return richText.map((t, i) => {
             if (t.annotations?.code) {
                 return (
-                    <code
-                        key={i}
-                        className="bg-[#1e1e1e] text-[#A6E3F1] px-1 py-0.5 rounded font-mono"
-                    >
+                    <code key={i} className="bg-[#1e1e1e] text-[#A6E3F1] px-1 py-0.5 rounded font-mono">
                         {t.plain_text}
                     </code>
                 )
             }
-
             return <span key={i}>{t.plain_text}</span>
         })
     }
 
     return(
         <>
-            <section className="relative
-min-h-dvh md:min-h-screen
-bg-cover
-bg-center
-pt-28 md:pt-40
-pb-16
-px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
+            <section className="relative min-h-dvh md:min-h-screen bg-cover bg-center pt-28 md:pt-40 pb-16 px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                 <div className="absolute inset-0 bg-[#3A3F5C]/86"></div>
                 <div className="relative w-full max-w-7xl mx-auto px-6">
                     <Link href={'/blog'} className="text-sm md:text-base drop-shadow-[0_2px_4px_#6DAFC2] hover:text-[#A6E3F1]">
@@ -83,15 +64,15 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                     <h1 className="text-2xl md:text-4xl font-extrabold py-6 drop-shadow-[0_2px_4px_#6DAFC2]">
                         {title}
                     </h1>
-                    {/* Cover */}
+                    {/* cover */}
                     {cover && (
-                        <div className="relative w-full aspect-[16/9] md:aspect-[4/1]">
+                        <div className="relative w-full aspect-video md:aspect-4/1">
                             <Image
-                            src={cover}
-                            alt="cover"
-                            fill
-                            unoptimized
-                            className="object-cover rounded-2xl"
+                                src={cover}
+                                alt="cover"
+                                fill
+                                unoptimized
+                                className="object-cover rounded-2xl"
                             />
                         </div>
                     )}
@@ -99,7 +80,7 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
 
                 <div className="relative w-full max-w-7xl mx-auto px-6 py-10">
                     <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_280px] gap-10">
-                        {/* Content */}
+                        {/* content */}
                         <div className="space-y-4">
                             {(blocks as BlockObjectResponse[]).map((block, i, arr) => {
                                 if (block.type === "image") {
@@ -150,9 +131,7 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                                         const b = arr[j] as BulletListBlock
                                         items.push(
                                             <li key={b.id}>
-                                                {renderRichText(
-                                                    b.bulleted_list_item.rich_text
-                                                )}
+                                                {renderRichText( b.bulleted_list_item.rich_text )}
                                             </li>
                                         )
                                         j++
@@ -177,12 +156,8 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                                         const children = childrenMap[b.id] || []
                                         items.push(
                                             <li key={b.id}>
-                                                {renderRichText(
-                                                    b.numbered_list_item.rich_text
-                                                )}
-
+                                                {renderRichText( b.numbered_list_item.rich_text )}
                                                 {children.map((c) => {
-
                                                     if (c.type === "paragraph") {
                                                         return (
                                                             <p key={c.id} className="ml-4 text-sm">
@@ -198,7 +173,6 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                                                             </pre>
                                                         )
                                                     }
-
                                                     return null
                                                 })}
                                             </li>
@@ -255,7 +229,7 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                             })}
                         </div>
 
-                        {/* Table Of Content */}
+                        {/* table of content */}
                         <div className="hidden lg:block">
                             <div className="sticky top-40 bg-[#454B6B] border border-[#7EA2C7] rounded-2xl p-4">
                                 <h3 className="text-center font-extrabold mb-2 drop-shadow-[0_2px_4px_#6DAFC2]">
@@ -279,11 +253,8 @@ px-4" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
                                             level = 3
                                         }
 
-                                        const indent =
-                                            level === 1 ? "ml-0" : level === 2 ? "ml-4" : "ml-8"
-
-                                        const fontStyle =
-                                            level === 1 ? "font-bold" : level === 2 ? "font-medium" : "font-normal"
+                                        const indent = level === 1 ? "ml-0" : level === 2 ? "ml-4" : "ml-8"
+                                        const fontStyle = level === 1 ? "font-bold" : level === 2 ? "font-medium" : "font-normal"
 
                                         return (
                                             <li key={h.id} className={indent}>

@@ -19,7 +19,6 @@ export async function getPosts() {
 
     const posts = await Promise.all(response.results.filter((post): post is PageObjectResponse => "properties" in post).map(async (post) => {
             const preview = await getPreviewText(post.id);
-
             return {
                 ...post,
                 preview,

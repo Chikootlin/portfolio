@@ -43,52 +43,19 @@ export default function Projects() {
   })
 
   return (
-    <section
-      ref={containerRef}
-      className="
-      relative
-      min-h-[100dvh] md:min-h-screen
-      bg-cover
-      bg-center
-      pt-28 md:pt-40
-      pb-16
-      px-4
-      flex
-      justify-center
-      "
-      style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}
-    >
-      <div className="absolute inset-0 bg-[#3A3F5C]/86"></div>
+    <>
+      <section ref={containerRef} className="relative min-h-dvh md:min-h-screen bg-cover bg-center pt-28 md:pt-40 pb-16 px-4 flex justify-center" style={{ backgroundImage: "url('/images/asfalt-light.webp')" }}>
+        <div className="absolute inset-0 bg-[#3A3F5C]/86"></div>
+        <div className="relative w-full max-w-7xl">
+          <h2 ref={titleRef} className="text-3xl md:text-4xl text-center font-bold drop-shadow-[0_2px_4px_#6DAFC2] mb-8 md:mb-10">
+            Projects
+          </h2>
 
-      <div className="relative w-full max-w-7xl">
-        <h2
-          ref={titleRef}
-          className="
-          text-3xl md:text-4xl
-          text-center
-          font-bold
-          drop-shadow-[0_2px_4px_#6DAFC2]
-          mb-8 md:mb-10
-          "
-        >
-          Projects
-        </h2>
-
-        <div
-          ref={cardRef}
-          className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-3
-          gap-6
-          "
-        >
-          {(projects as Project[]).map((p) => (
-            <ProjectCard key={p.id} project={p} />
-          ))}
+          <div ref={cardRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(projects as Project[]).map((p) => ( <ProjectCard key={p.id} project={p} /> ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
