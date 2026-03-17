@@ -1,6 +1,6 @@
 "use client"
 
-import AchievementCard from "../components/achievementCard";
+import AchievementCard from "../../components/achievementCard";
 import achievements from "@/data/achievement.json"
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

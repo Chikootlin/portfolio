@@ -1,6 +1,6 @@
 "use client";
 
-import PostCard from "../components/postCard";
+import PostCard from "../../components/postCard";
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

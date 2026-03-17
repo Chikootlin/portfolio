@@ -1,6 +1,6 @@
 "use client"
 
-import ProjectCard from "../components/projectCard"
+import ProjectCard from "../../components/projectCard"
 import projects from "@/data/project.json"
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
