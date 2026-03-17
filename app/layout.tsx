@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 import SmoothScrollWrapper from "./components/smoothScrollWrapper";
 
 const jetbrains = JetBrains_Mono({
@@ -37,6 +38,7 @@ export default function RootLayout({
             {/* Footer */}
             <Footer></Footer>     
           </div>
+          <Analytics />
         </body>
       </html>
     </SmoothScrollWrapper>
