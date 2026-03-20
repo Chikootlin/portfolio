@@ -231,7 +231,7 @@ export default async function BlogDetail({ params }: { params: Promise< { slug: 
 
                         {/* table of content */}
                         <div className="hidden lg:block">
-                            <div className="sticky top-40 bg-[#454B6B] border border-[#7EA2C7] rounded-2xl p-4">
+                            <div className="sticky top-40 bg-[#454B6B] border border-[#7EA2C7] rounded-2xl p-4 max-h-[70vh] overflow-y-auto">
                                 <h3 className="text-center font-extrabold mb-2 drop-shadow-[0_2px_4px_#6DAFC2]">
                                     Table of Contents
                                 </h3>

@@ -7,5 +7,14 @@
         "category": "National",
         "team": "Individual",
         "organizer": "Binus University"
+    },
+    {
+        "id": "satriaai2025",
+        "title": "SATRIA AI 2025",
+        "rank": "Silver Medal",
+        "year": 2025,
+        "category": "National",
+        "team": "Individual",
+        "organizer": "WIR Group, Centrinova, etc."
     }
 ]

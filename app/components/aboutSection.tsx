@@ -99,7 +99,7 @@ export default function AboutSection(){
                         />
                         <AboutCard
                             icon={FiHeart}
-                            text="I’m also a certified &quot;karbit&quot;. Current list of my kisah is: Wonyoung, Jihyo, Haerin, Suisei, Karina, Seol In-Ah, Go Youn-jung, Jiwoo, Kobo, Suisei, Ryujin, Winter, Momo, Aralie, Kimmy, Oline, Erine, and many more"
+                            text="I’m also a certified &quot;karbit&quot;. Current list of my kisah is: Wonyoung, Jihyo, Haerin, Suisei, Karina, Seol In-Ah, Go Youn-jung, Kobo, Suisei, Aralie, Kimmy, Oline, Erine, and many more"
                         />
                     </div>
                 </div>
