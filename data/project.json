@@ -5,5 +5,12 @@
         "description": "SKIPIKET is a web application for managing classroom duty schedules at Immanuel School. It allows students, teachers, and staff to easily check who is on duty today, this week, or this month.",
         "date": "2025-11-23",
         "image": "/images/projects/skipiket.jpg"
+    },
+    {
+        "id": "mierendangperfect",
+        "title": "MieRendangPerfect",
+        "description": "MieRendangPerfect is a discord bot that shows upcoming CTF events from CTFtime.org. It allows users to easily stay updated on upcoming CTF events and participate in them.",
+        "date": "2026-03-20",
+        "image": "/images/projects/mie_maid.jpg"
     }
 ]
