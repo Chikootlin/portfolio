@@ -20,6 +20,8 @@ export default function Projects() {
   const containerRef = useRef(null)
   const titleRef = useRef(null)
   const cardRef = useRef(null)
+  
+  const sortedProjects = [...(projects as Project[])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -52,7 +54,7 @@ export default function Projects() {
           </h2>
 
           <div ref={cardRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(projects as Project[]).map((p) => ( <ProjectCard key={p.id} project={p} /> ))}
+            {sortedProjects.map((p) => (<ProjectCard key={p.id} project={p} />))}
           </div>
         </div>
       </section>
